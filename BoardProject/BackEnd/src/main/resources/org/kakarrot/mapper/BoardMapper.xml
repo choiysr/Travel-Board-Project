@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kakarrot.mapper.BoardMapper">
+    <resultMap id="boardMap" type="org.kakarrot.domain.BoardVO">
+        <id property="bno" column="bno"/>
+        <result property="bno" column="bno"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="writer" column="writer"/>
+        <result property="represent" column="represent"/>
+        <collection property="attachList" resultMap="attachMap"/>
+        <collection property="replyList" resultMap="org.kakarrot.mapper.ReplyMapper.replyMap"/>
+    </resultMap>
+
+    <resultMap id="attachMap" type="org.kakarrot.domain.AttachVO">
+        <result property="fname" column="fname"/>
+        <result property="uploadpath" column="uploadpath"/>
+        <result property="isimg" column="isimg"/>
+    </resultMap>
+
+<!--    <resultMap id="replyMap" type="org.kakarrot.domain.ReplyVO">-->
+<!--        <result property="rno" column="rno"/>-->
+<!--        <result property="reply" column="reply"/>-->
+<!--        <result property="replyer" column="replyer"/>-->
+<!--        <result property="updateddate" column="updateddate"/>-->
+<!--    </resultMap>-->
+
+    <sql id="search">
+        <if test="keyword != null and type != null">
+            <foreach collection="type" item="item" open="AND (" close=")" separator="OR">
+                <if test="item eq 'T'.toString()">title like concat('%', #{keyword}, '%')</if>
+                <if test="item eq 'C'.toString()">content like concat('%', #{keyword}, '%')</if>
+                <if test="item eq 'W'.toString()">writer like concat('%', #{keyword}, '%')</if>
+            </foreach>
+        </if>
+    </sql>
+
+    <select id="selectByBno" resultMap="boardMap">
+        select board.*, attach.*, reply.*, reply2.rno childrno, reply2.reply childreply, reply2.replyer childreplyer, reply2.pno childpno from tbl_board board
+        left outer join tbl_attach attach on board.bno = attach.bno
+        left outer join tbl_reply reply on board.bno = reply.bno
+        left outer join tbl_reply reply2 on reply.rno = reply2.pno
+        where board.bno = #{bno}
+        and reply.pno is null
+    </select>
+
+    <select id="listPage" resultMap="boardMap">
+        select * from tbl_board
+        <if test="lastBno == 0">where bno > 0</if>
+        <if test="lastBno != 0">where bno <![CDATA[ < ]]> #{lastBno}</if>
+        <include refid="search"></include>
+        order by bno desc limit 0,#{amount}
+    </select>
+
+    <insert id="insertBoard">
+        insert into tbl_board (title, content, writer, represent)
+        values (#{title}, #{content}, #{writer}, #{represent})
+    </insert>
+
+    <update id="updateBoard">
+        update tbl_board
+        set title = #{title}, content = #{content}, represent = #{represent}
+        where bno = #{bno}
+    </update>
+
+    <update id="replyCnt">
+        update tbl_board
+        set replycnt = replycnt+1
+        where bno = #{bno}
+    </update>
+
+    <delete id="deleteBoard">
+        delete from tbl_board
+        where bno = #{bno}
+    </delete>
+
+</mapper>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>떠나GO</title>
+
+    <!-- Custom fonts for this theme -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="css/freelancer.css" rel="stylesheet">
+    <!--<link href="bootstrap-select.min.css" rel="stylesheet">-->
+    <link href="css/common.css" rel="stylesheet" type="text/css">
+
+
+</head>
+
+<style>
+    .boardImg {
+        width: 500px;
+        height: auto;
+    }
+
+    .replyBtn {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+</style>
+
+<body id="page-top">
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">떠나GO</a>
+        <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
+                type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <select name="category" style="height: 30px " class="selectpicker">
+            <option value="T" style="background-color: transparent;">제목</option>
+            <option value="C">내용</option>
+            <option value="W">작성자</option>
+            <option value="TW">제목+내용</option>
+        </select>
+        <input type="text" name="keyword" class="srch">
+        <button id="searchBtn">GO</button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">HOME</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" data-toggle="modal"
+                       data-target="#write" id="moveWrite">WRITE</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#" data-toggle="modal" data-target="#login"
+                    id="moveLogin">LOGIN</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Masthead -->
+<header class="masthead bg-primary text-white text-center" style="background-image: url('https://travelblog.expedia.co.kr/wp-content/uploads/2016/12/08.jpg'); background-size: 100vw auto">
+    <div class="container d-flex align-items-center flex-column">
+
+<!--        <iframe src="https://player.vimeo.com/video/348700686?autoplay=1&amp;loop=1&amp;background=1" frameborder="0"-->
+<!--                autoplay="1" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>-->
+        <div class="txt01">
+            <p>보고 있으면 떠나고 싶은 여행 커뮤니티</p>
+            <p>Be open to your dreams, people.
+                Embrace that distant shore.
+                Because our mortal journey is over all too soon.
+            </p>
+        </div>
+
+    </div>
+</header>
+
+<!-- Portfolio Section -->
+<section class="page-section portfolio" id="portfolio">
+    <div class="container">
+
+        <!-- Portfolio Section Heading -->
+<!--        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Bulletin Board</h2>-->
+
+        <!-- Icon Divider -->
+<!--        <div class="divider-custom">-->
+<!--            <div class="divider-custom-line"></div>-->
+<!--            <div class="divider-custom-icon">-->
+<!--                <i class="fas fa-star"></i>-->
+<!--            </div>-->
+<!--            <div class="divider-custom-line"></div>-->
+<!--        </div>-->
+
+        <!-- Portfolio Grid Items -->
+        <div class="row" id="listDiv">
+
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+</section>
+
+
+<!-- Copyright Section -->
+<section class="copyright py-4 text-center text-white">
+    <div class="container">
+        <small>Copyright &copy; SOOHYUN LIM 2019</small>
+    </div>
+</section>
+
+<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+<div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+</div>
+
+<!-- Portfolio Modals -->
+
+<!-- write page -->
+<div class="portfolio-modal modal fade" id="write" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label"
+     aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" name="closeBtn">
+          <span aria-hidden="true">
+            <i class="fas fa-times"></i>
+          </span>
+            </button>
+            <div class="modal-body text-center">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <!-- Portfolio Modal - Title -->
+                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">글 작성</h2>
+                            <!-- Icon Divider -->
+                            <div class="divider-custom">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+                            <!-- Portfolio Modal - Image -->
+                            <!--                <img class="img-fluid rounded mb-5" src="img/portfolio/cabin.png" alt="">-->
+                            <!-- Portfolio Modal - Text -->
+                            <div>
+                                <input type="text" name="title" class="ip0202" placeholder="제목을 적어주세요.">
+                            </div>
+                            <div>
+                                <div id="textDiv" contentEditable="true" class="ta0202" style="overflow: auto">
+
+                                </div>
+                            </div>
+
+                            <div class="ip0303">
+                                <div><span>이미지</span>
+                                    <input type="file" id="images" name="files" accept="image/*" multiple>
+                                </div>
+                            </div>
+                            <div class="ip0303">
+                                <div><span>파일</span>
+                                    <input type="file" id="files" name="files" multiple>
+                                </div>
+                            </div>
+                            <ul id="fileList"></ul>
+                            <ul id="imgList"></ul>
+
+
+                            <button id="writeBtn" class="btn btn-primary" href="#">등록</button>
+                            <button name="closeBtn" class="btn btn-primary" href="#" data-dismiss="modal">
+                                <i class="fas fa-times fa-fw"></i>
+                                Close Window
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- login page -->
+<div class="portfolio-modal modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label"
+     aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" name="closeBtn">
+          <span aria-hidden="true">
+            <i class="fas fa-times"></i>
+          </span>
+            </button>
+            <div class="modal-body text-center">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <!-- Portfolio Modal - Title -->
+                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Login</h2>
+                            <!-- Icon Divider -->
+                            <div class="divider-custom">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+                            <div>
+                                <form id="loginForm">
+                                    ID <input type="text" name="username" placeholder="아이디를 입력해주세요...">
+                                    PW <input type="password" name="password" placeholder="비밀번호를 입력해주세요...">
+                                </form>
+                            </div>
+
+                            <button id="loginBtn" class="btn btn-primary" href="#">Login</button>
+                            <button name="closeBtn" class="btn btn-primary" href="#" data-dismiss="modal">
+                                <i class="fas fa-times fa-fw"></i>
+                                취소
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- list read-->
+<div class="portfolio-modal modal fade" id="portfolioModal" tabindex="-1" role="dialog"
+     aria-labelledby="portfolioModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <i class="fas fa-times"></i>
+          </span>
+            </button>
+            <div class="modal-body text-center">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <!-- Portfolio Modal - Title -->
+                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="title">제목</h2>
+                            <!-- Icon Divider -->
+                            <div class="divider-custom">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+
+                            <div class="mb-5" id="content" style="overflow: auto"></div>
+                            <div>
+                                <ul id="fileList"></ul>
+                                <ul id="imgList"></ul>
+                                <ul class="attachment"></ul>
+                            </div>
+
+                            <input type="hidden" name="bno">
+
+
+                            <button class="btn btn-primary" href="#" id="modifyBoard" data-toggle="modal"
+                                    data-target="#write">수정
+                            </button>
+                            <button class="btn btn-primary" href="#" id="deleteBoard">삭제</button>
+                            <button name="closeBtn" class="btn btn-primary" href="#" data-dismiss="modal"><i
+                                    class="fas fa-times fa-fw"></i>닫기
+                            </button>
+
+
+                            <div class="replyPage">
+                                <div style="overflow:scroll; width:100%; height:200px;">
+                                    <ul class="replyList">
+
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <div id="replyDiv" contentEditable="true"
+                                         style="overflow: auto; width: 100%; height: 2em; border: 1px solid"></div>
+                                    <input type="file" name="replyImg" multiple>
+                                    <button class="btn btn-primary replyWriteBtn" href="#">등록</button>
+                                </div>
+
+
+                                <div id="replyChildInput" style="display: none">
+                                    <div id="replyChildDiv" contentEditable="true"
+                                         style="overflow: auto; width: 100%; height: 2em; border: 1px solid"></div>
+                                    <input type="file" name="replyChildImg" multiple>
+                                    <button value="replyChild" class="btn btn-primary replyWriteBtn" href="#">등록</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Contact Form JavaScript -->
+<script src="js/jqBootstrapValidation.js"></script>
+<!--<script src="js/contact_me.js"></script>&lt;!&ndash;&ndash;&gt;-->
+
+<!-- Custom scripts for this template -->
+<script src="js/freelancer.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+<script id="entry-template" type="text/x-handlebars-template">
+    <div class="col-md-6 col-lg-4" id={{bno}}>
+        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white">
+                    <i class="fas fa-plus fa-3x"></i>
+                </div>
+            </div>
+            <img class="img-fluid"
+                 src="http://localhost:8080/board/viewFile?fname={{represent.fname}}&uploadpath={{represent.uploadpath}}"
+                 alt="">
+            <p class="brd-tit">　{{bno}}. <span>{{title}}</span> <i>-{{writer}}</i></p>
+        </div>
+    </div>
+</script>
+
+<script src="js/jsonAjax.js"></script>
+<script src="js/variable.js"></script>
+<script src="js/btnEvent.js"></script>
+<script src="js/boardUtil.js"></script>
+<!--<script src="bootstrap-select.js"></script>-->
+<script>
+    $(document).ready(function () {
+        getList();
+
+        let timer;
+
+        vals.$window.scroll(function () {
+            if (timer)
+                window.clearTimeout(timer);
+
+            timer = window.setTimeout(function () {
+                if (vals.$window.scrollTop() + vals.$window.height() + 30 > $(document).height()) {
+                    getList();
+                }
+            }, 100);
+        });
+
+        vals.$close.on('click', function () {
+            vals.$nameTitle.val(null);
+            vals.$textDiv.html(null);
+            vals.$fileList.html(null);
+            vals.$imgList.html(null);
+        });
+
+        $("#moveWrite").on('click', function () {
+            vals.$writeBtn.val(0);
+            vals.$writeBtn.text("등록");
+            vals.$writeBtn.off('click');
+            vals.$writeBtn.on('click', writeEvent);
+        });
+
+        vals.$writeBtn.on('click', writeEvent);
+        $("#deleteBoard").on('click', deleteEvent);
+
+        $("#modifyBoard").on('click', function () {
+            let bno = vals.$bno.val();
+            vals.$writeBtn.val(bno);
+            vals.$writeBtn.text("수정");
+            vals.$writeBtn.off('click');
+            vals.$writeBtn.on('click', updateEvent);
+            vals.$close.click();
+            vals.$nameTitle.val(vals.$idTitle.text());
+            vals.$textDiv.html(vals.$idContent.html());
+            //이미지 섬네일 및 파일들 띄우기
+
+        });
+
+        $("#searchBtn").on('click', function () {
+            vals.lastBno = 0;
+            vals.$listDiv.html(null);
+            vals.$window.scrollTop(0);
+            getList();
+        });
+
+        $("#loginBtn").on('click',function () {
+            let loginForm = document.getElementById('loginForm');
+            let data = new FormData(loginForm);
+            console.log(data.get('username'));
+            console.log(data.get('password'));
+            $.ajax({
+                url:"http://localhost:8080/login",
+                type:"post",
+                data: data,
+                processData: false,
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8"
+            }).done(function (data) {
+                console.log(data);
+            });
+
+             // jsonService.postJson("http://localhost:8080/login",{username:$("input[name='username']"), password:$("input[name='password']")});
+        });
+
+        $(".replyPage").on('click', '.replyWriteBtn', function () {
+            let url = "http://localhost:8080/board/writeReply";
+            let pno = $(this).parents('li').attr('data-pno') ? $(this).parents('li').attr('data-pno') : $(this).parents('li').attr('data-rno');
+            let reply = $(this).val() === "replyChild" ? $("#replyChildDiv").html() : $("#replyDiv").html();
+            let imgs = new Array();
+            $(".replyImg").each(function (index, img) {
+                imgs.push({img: img.getAttribute('data-img')});
+            });
+            jsonService.postJson(url, {
+                bno: vals.$bno.val(),
+                reply: reply,
+                pno: pno,
+                replyImgList: imgs
+            }, success);
+
+            function success(datas) {
+                alert(datas.msg);
+                $("#replyChildInput").attr('style','display:none').insertAfter($("#replyDiv"));
+                getReply(vals.$bno.val());
+            }
+        });
+
+        //위임으로 수정펑션 만들기 put보내주고 끝나면 버튼값 초기화
+        $(".replyPage").on('click', '.replyModifyBtn', function () {
+            let url = "http://localhost:8080/board/modifyReply";
+            let rno = $(this).parents('li').attr('data-rno');
+            let reply = $(this).val() === "replyChild" ? $("#replyChildDiv").html() : $("#replyDiv").html();
+            let imgs = new Array();
+            $(".replyImg").each(function (index, img) {
+                imgs.push({rno: rno, img: img.getAttribute('data-img')});
+            });
+            jsonService.updateJson(url, {
+                rno: rno,
+                reply: reply,
+                replyImgList: imgs
+            }, success);
+
+            function success(datas) {
+                alert(datas.msg);
+                $("#replyChildInput").attr('style','display:none').insertAfter($("#replyDiv"));
+                getReply(vals.$bno.val());
+
+            }
+        });
+
+
+        $('.replyList').on('click', 'li > .replyBtn', function () {
+            let btnVal = this.getAttribute('data-btn');
+            let $replyLi = $(this).parent();
+            $("#replyChildInput > button").attr('class','btn btn-primary replyWriteBtn').text("등록");
+            if (btnVal === "replyWriteBtn")
+                $("#replyChildInput").attr('style','display:block').appendTo($replyLi);
+            else if (btnVal === "replyUpdateBtn") {
+                $("#replyChildDiv").html($replyLi.children('.replyChildReply').html());
+                $("#replyChildInput").attr('style','display:block').appendTo($replyLi);
+                $replyLi.children('.replyChildReply').remove();
+                $("#replyChildInput > button").attr('class','btn btn-primary replyModifyBtn').text("수정");
+            }
+            else if (btnVal === "replyDeleteBtn") {
+                let rno = $replyLi.attr('data-rno');
+                let pno = $replyLi.attr('data-pno');
+                let imgs = new Array();
+                $(".replyImg").each(function (index, img) {
+                    imgs.push({img: img.getAttribute('data-img')});
+                });
+                jsonService.deleteJson("http://localhost:8080/board/reply/" + rno, {rno: rno, pno: pno, replyImgList:imgs}, success);
+
+                function success(datas) {
+                    alert(datas.msg);
+                    $("#replyChildInput").attr('style','display:none').insertAfter($("#replyDiv"));
+                    getReply(vals.$bno.val());
+                }
+            }
+        });
+
+        //replyImg change저장쓰
+        $("input[name='replyImg']").on("change", function (e) {
+            let formData = new FormData();
+            let images = $("input[name='replyImg']")[0].files;
+            let url = 'http://localhost:8080/board/';
+            Array.from(images).forEach(img => formData.append("files", img));
+
+            fileService.uploadFile(url + "uploadFile", formData, success);
+
+            function success(datas) {
+                Array.from(datas).forEach(data => {
+                    let img = "<img data-img='" + data.uploadpath + "_" + data.fname + "' class='boardImg replyImg' src='" + url + "viewFile?fname=v_" + data.fname + "&uploadpath=" + data.uploadpath + "'>";
+                    $("#replyDiv").append(img);
+                });
+            }
+        });
+
+        //replyImg change저장쓰
+        $("input[name='replyChildImg']").on("change", function (e) {
+            let formData = new FormData();
+            let images = $("input[name='replyChildImg']")[0].files;
+            let url = 'http://localhost:8080/board/';
+            Array.from(images).forEach(img => formData.append("files", img));
+
+            fileService.uploadFile(url + "uploadFile", formData, success);
+
+            function success(datas) {
+                Array.from(datas).forEach(data => {
+                    let img = "<img data-img='" + data.uploadpath + "_" + data.fname + "' class='boardImg replyImg' src='" + url + "viewFile?fname=v_" + data.fname + "&uploadpath=" + data.uploadpath + "'>";
+                    $("#replyChildDiv").append(img);
+                });
+            }
+        });
+
+        vals.$inputImg.on("change", function (e) {
+            let formData = new FormData();
+            let images = vals.$inputImg[0].files;
+            let url = 'http://localhost:8080/board/';
+            Array.from(images).forEach(img => formData.append("files", img));
+            fileService.uploadFile(url + "uploadFile", formData, success);
+
+            function success(datas) {
+                Array.from(datas).forEach(data => {
+                    let thumbnail = url + "viewFile?fname=s_" + data.fname + "&uploadpath=" + data.uploadpath;
+                    let fileTag = "<li><img class='liThumbnail' src='" + thumbnail + "'><i data-fname='" + data.fname + "' data-uploadpath='" + data.uploadpath + "' data-isimg='" + data.isimg + "' data-represent='0' class='fas fa-times fa-fw removeFile'></i></img>";
+                    let img = "<img data-represent='0' data-uploadpath='"+data.uploadpath+"' data-fname='" + data.fname + "' class='boardImg' src='" + url + "viewFile?fname=v_" + data.fname + "&uploadpath=" + data.uploadpath + "'>";
+                    vals.$imgList.append(fileTag);
+                    vals.$textDiv.append(img);
+                });
+                representCheck();
+            }
+        });
+
+        vals.$inputFile.on("change", function (e) {
+            let formData = new FormData();
+            let files = vals.$inputFile[0].files;
+            let url = 'http://localhost:8080/board/uploadFile';
+            Array.from(files).forEach(file => formData.append("files", file));
+            fileService.uploadFile(url, formData, success);
+
+            function success(datas) {
+                Array.from(datas).forEach(data => {
+                    let fileTag = "<li>" + data.realname + "<i data-fname='" + data.fname + "' data-uploadpath='" + data.uploadpath + "' data-isimg='0' data-represent='0' class='fas fa-times fa-fw boardFile removeFile'></i></li>";
+                    vals.$fileList.append(fileTag);
+                });
+            }
+        });
+
+    });
+
+</script>
+</body>
+
+</html>

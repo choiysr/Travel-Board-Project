@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kakarrot.mapper.AttachMapper">
+
+    <insert id="insertFile">
+        insert into tbl_attach (bno, fname, uploadpath, isimg)
+        values (last_insert_id(), #{fname}, #{uploadpath}, #{isimg})
+    </insert>
+
+    <delete id="deleteFiles">
+        delete from tbl_attach
+        where bno = #{bno}
+    </delete>
+
+    <select id="findByBno" resultType="org.kakarrot.domain.AttachVO">
+        select * from tbl_attach where bno = #{bno}
+    </select>
+
+</mapper>

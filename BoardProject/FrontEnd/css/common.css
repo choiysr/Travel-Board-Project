@@ -1,0 +1,32 @@
+body{font-family:'Malgun Gothic','맑은 고딕',sans-serif; }
+header{height:555px;overflow:hidden;position:relative;}
+.masthead{padding:0;}
+header .container iframe{width:100%;height:555px;min-width:100vw;min-height:100vw;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
+.txt01{position:absolute;top:235px;left:30px;padding: 25px 0;border-top: 1px solid #fff;border-bottom: 1px solid #fff;text-align: left;}
+.txt01 p{font-size: 60px;font-weight: 700;margin-bottom: 15px;line-height: normal;color: #fff;text-shadow: 0 1px 4px rgba(0,0,0,0.15);}
+.txt01 p:last-child{font-size: 18px;line-height: 1.4;}
+.selectpicker{border:0 none;background:none;color:#ddd;border-bottom:1px solid #fff;}
+.selectpicker option{background:none;}
+.srch{border:0 none;background:none;color:#fff;border-bottom:1px solid #fff;height:29px;line-height:29px;}
+#searchBtn{border:0 none;background:none;color:#fff;border:2px solid #fff;border-radius:50%;width:39px;height:39px;display:inline-block;box-sizing:border-box;text-align:center;padding:0;}
+nav div.container{max-width:100%;}
+.navbar-shrink{background:#0f6674;}
+.brd-tit{font-size:13px;padding-top:10px;line-height:20px;}
+.brd-tit span{font-weight:bold;}
+.brd-tit i{display:block;text-align:right;border-top:1px solid #ddd;padding-right:10px;}
+.ip0202{width:100%;border:0 none;border-bottom:1px solid #000;margin-bottom:15px;}
+.ta0202{width:100%;height:500px;border:1px solid #ddd;}
+.ip0303{text-align:left;overflow:hidden;margin-bottom:15px;}
+.ip0303 div{background:#1abc9c;width:100px;border-radius: 0.5rem;position:relative;height:40px;}
+.ip0303 div span{color:#fff;position:absolute;top:8px;left:10px;}
+.ip0303 div input{color:transparent;background:none;margin-left:-86px;outline: none;position:absolute;top:0;left:0;height:40px;}
+
+@media screen and (max-width: 1200px){
+    .txt01{left:2.5vw;padding:2.08vw;}
+    .txt01 p{font-size:5vw;}
+    .txt01 p:last-child{font-size:1.5vw;}
+}
+@media screen and (max-width: 768px){
+    header .container iframe{width:100%;height:100%;min-width:200vw;min-height:200vw;}
+
+}

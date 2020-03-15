@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.kakarrot.mapper.ReplyMapper">
+
+    <resultMap id="replyMap" type="org.kakarrot.domain.ReplyVO">
+        <id property="rno" column="rno"/>
+        <result property="rno" column="rno"/>
+        <result property="reply" column="reply"/>
+        <result property="replyer" column="replyer"/>
+        <collection property="replyChildList" resultMap="replyChildMap"/>
+    </resultMap>
+
+    <resultMap id="replyChildMap" type="org.kakarrot.domain.ReplyVO">
+        <result property="rno" column="childrno"/>
+        <result property="reply" column="childreply"/>
+        <result property="replyer" column="childreplyer"/>
+        <result property="pno" column="childpno"/>
+    </resultMap>
+
+    <insert id="insertReply">
+        insert into tbl_reply (bno, reply, replyer, pno)
+        values (#{bno}, #{reply}, #{replyer}, #{pno})
+    </insert>
+
+    <delete id="deleteReply">
+        delete from tbl_reply where rno = #{rno}
+    </delete>
+
+    <update id="updateReply">
+        update tbl_reply
+        set reply = #{reply}
+        where rno = #{rno}
+    </update>
+
+    <select id="replyList" resultMap="replyMap">
+        select t1.*,t2.rno childrno, t2.reply childreply, t2.replyer childreplyer, t2.pno childpno from tbl_reply t1 left outer join tbl_reply t2
+        on t1.rno = t2.pno
+        where t1.bno = #{bno}
+        and t1.pno is null
+    </select>
+
+    <select id="countPno" resultType="Integer">
+        select count(*) from tbl_reply
+        where pno = #{pno}
+    </select>
+
+
+    <!-- ============== reply Img table =================  -->
+
+    <insert id="insertReplyImg">
+        insert into tbl_reply_img (rno, img)
+        values (last_insert_id(), #{img})
+    </insert>
+
+    <insert id="updateReplyImg">
+        insert into tbl_reply_img (rno, img)
+        values (#{rno}, #{img})
+    </insert>
+
+    <delete id="deleteReplyImg">
+        delete from tbl_reply_img where rno = #{rno}
+    </delete>
+
+    <select id="replyImgList" resultType="org.kakarrot.domain.ReplyImgVO">
+        select * from tbl_reply_img where rno = #{rno}
+    </select>
+
+</mapper>
